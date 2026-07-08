@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<%- partial('_partial/head') %>
+<body>
+    <!-- 🧱 积木魔法：引入全站通用导航顶栏 -->
+    <%- partial('_partial/header') %>
+
+    <main>
+        <!-- 专栏横幅介绍 -->
+        <section class="category-header">
+            <h1 class="category-title">📚 专栏：<%= page.category %></h1>
+            <p class="category-desc">本专栏收录了关于「<strong><%= page.category %></strong>」的所有硬核知识点，点击标题即可进入阅读</p>
+        </section>
+
+        <!-- 知识点目录列表 -->
+        <section class="post-list-box">
+            <!-- 遍历输出当前专栏下的所有文章 -->
+            <% page.posts.sort('date', 'desc').each(function(post, index) { %>
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;"><%= index + 1 %>.</span>
+                        <a href="<%- url_for(post.path) %>" class="post-link">
+                            <%= post.title %>
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date"><%= post.date.format('YYYY-MM-DD') %></div>
+                </div>
+            <% }); %>
+        </section>
+    </main>
+
+    <!-- 🧱 积木魔法：引入全站通用尾部 -->
+    <%- partial('_partial/footer') %>
+</body>
+</html>

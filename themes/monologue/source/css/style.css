@@ -1,0 +1,194 @@
+/* ==========================================================================
+   🌟 Monologue 主题终极全量美学设计系统 (Design System)
+   ========================================================================== */
+
+:root {
+    --bg-main: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    --card-shadow-hover: 0 10px 25px rgba(59, 130, 246, 0.12);
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    line-height: 1.6;
+}
+
+/* 🧱 1. 全站通用顶部导航与尾部 */
+header {
+    text-align: center;
+    padding: 2.5rem 0;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+header h1 { margin: 0; font-size: 2.2rem; letter-spacing: -0.5px; }
+header nav { margin-top: 1.2rem; }
+header nav a {
+    margin: 0 1.2rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+header nav a:hover { color: var(--accent-color); transform: translateY(-2px); }
+
+footer {
+    text-align: center;
+    padding: 3.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 5rem;
+}
+
+/* 🃏 2. 卡片通用的微动效（首页专栏、专栏目录、文章容器） */
+.column-card, .category-header, .post-list-box, .article-container {
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.column-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: #bfdbfe;
+}
+
+/* 📚 3. 专栏专属目录页 (category.ejs) 美学补全 */
+.category-header {
+    padding: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 4px solid var(--accent-color);
+}
+.category-title { margin: 0; color: #0f172a; font-size: 1.8rem; }
+.category-desc { color: var(--text-muted); margin-top: 0.8rem; font-size: 0.95rem; }
+
+.post-list-box { padding: 1.5rem 2.5rem; }
+.post-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-item:last-child { border-bottom: none; }
+.post-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.post-link:hover { color: var(--accent-color); }
+.post-date { color: #94a3b8; font-size: 0.85rem; }
+
+/* 📖 4. 文章详情页 (post.ejs) 与正文排版美学 */
+.article-container { padding: 2.5rem 3rem; }
+.article-title { font-size: 2.3rem; color: #0f172a; margin-top: 0; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem; }
+.article-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2.5rem; }
+.article-content { font-size: 1.08rem; line-height: 1.85; color: #334155; }
+.article-content h2, .article-content h3 { color: #0f172a; margin-top: 2rem; }
+.article-content a { color: var(--accent-color); text-decoration: underline; }
+.article-content code { background: #f1f5f9; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.9em; color: #e11d48; }
+
+/* 🚀 5. 同专栏知识点侧边/底部切换栏特效补全 */
+.column-nav-box {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: #f1f5f9;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+}
+.nav-item {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem 1.2rem;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.nav-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.nav-link { color: #334155; text-decoration: none; display: block; font-weight: 500; }
+.nav-link:hover { color: var(--accent-color); }
+/* 🌙 暗黑模式 (Dark Mode) 变色魔法 */
+body.dark-mode {
+    --bg-main: #0f172a;       /* 深邃极客蓝黑背景 */
+    --text-main: #f8fafc;     /* 明亮的浅色正文 */
+    --text-muted: #94a3b8;    /* 柔和的次要文本 */
+    --card-bg: #1e293b;       /* 卡片深色底 */
+    --border-color: #334155;  /* 深色分割线 */
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 10px 25px rgba(56, 189, 248, 0.15);
+}
+
+/* 让切换颜色的过程拥有 0.3 秒的丝滑渐变！ */
+body, .column-card, .category-header, .post-list-box, .article-container, .column-nav-box, .nav-item {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+/* ==========================================================================
+   📚 STM32 双库联动选项卡 (Standard Lib vs HAL Lib Switcher)
+   ========================================================================== */
+.lib-switch-box {
+    margin: 2.5rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+/* 顶部按钮控制栏 */
+.lib-switch-nav {
+    display: flex;
+    background: #f1f5f9;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0.8rem;
+    gap: 0.5rem;
+}
+body.dark-mode .lib-switch-nav { background: #0f172a; }
+
+/* 切换按钮样式 */
+.lib-btn {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.lib-btn:hover { color: var(--text-main); background: rgba(0,0,0,0.05); }
+body.dark-mode .lib-btn:hover { background: rgba(255,255,255,0.05); }
+
+/* 处于激活状态的按钮（高亮显示！） */
+.lib-btn.active {
+    background: var(--card-bg);
+    color: var(--accent-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* 底部内容展示区 */
+.lib-content {
+    padding: 1.5rem 2rem;
+}
