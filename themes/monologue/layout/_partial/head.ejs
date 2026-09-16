@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- 🧠 智能标题判断：如果是文章页看 page.title；如果是专栏页看 page.category；都没有就显示默认博客名！ -->
-    <title><%= page.title || page.category || 'Monologue' %></title>
+    <title><%= page.title || page.category || config.title %></title>
     
     <!-- 🚀 Hexo 原生样式引入助手：自动连通我们刚才在 source/css/style.css 写的样式！ -->
     <%- css('css/style') %>

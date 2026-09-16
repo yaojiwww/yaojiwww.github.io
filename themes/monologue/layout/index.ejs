@@ -4,31 +4,22 @@
 <body>
     <%- partial('_partial/header') %>    
         <main>
-        <h2 style="text-align: center; color: #1e293b; margin-bottom: 2.5rem; font-weight: 600;">📚 探索我的知识库专栏</h2>
+        <h2 style="text-align: center; color: #1e293b; margin-bottom: 0.8rem; font-weight: 600;">🧰 我的小工具</h2>
+        <p style="text-align: center; color: #64748b; margin: 0 0 2.5rem;">一些为学习和日常使用做的小工具。</p>
         
         <!-- 使用你最熟悉的 CSS Grid 网格布局，自动把专栏排成精美的卡片矩阵！ -->
         <div class="columns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.8rem;">
-            <% site.categories.each(function(cat) { %>
-                <div class="column-card" style="background: white; padding: 2rem 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
-                    
-                    <div>
-                        <!-- 专栏名称 -->
-                        <h3 style="margin-top: 0; color: #0f172a; font-size: 1.3rem;"><%= cat.name %></h3>
-                        
-                        <!-- 专栏收录的文章数量 -->
-                        <p style="color: #64748b; font-size: 0.9rem; margin: 1rem 0 2rem;">
-                            📑 共收录 <strong><%= cat.length %></strong> 篇硬核知识点
-                        </p>
-                    </div>
-                    
-                    <!-- 点击进入专栏的按钮 -->
-                    <div>
-                        <a href="<%- url_for(cat.path) %>" style="display: inline-block; padding: 0.6rem 1.8rem; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);">
-                            进入专栏 →
-                        </a>
-                    </div>
+            <div class="column-card" style="background: white; padding: 2rem 1.5rem; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; text-align: center; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3 style="margin-top: 0; color: #0f172a; font-size: 1.3rem;">🔢 数字英语练习</h3>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 1rem 0 2rem;">随机数字、英文答案和美式英语发音，练习数字的读法与听力。</p>
                 </div>
-            <% }); %>
+                <div>
+                    <a href="<%- url_for('/tools/number-english-practice/') %>" style="display: inline-block; padding: 0.6rem 1.8rem; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);">
+                        打开工具 →
+                    </a>
+                </div>
+            </div>
         </div>
     </main>
     <%- partial('_partial/footer') %>

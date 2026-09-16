@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Number English Practice</title>
+  <style>
+    :root { --ink:#172133; --muted:#657087; --purple:#6857dd; --pale:#f0efff; --line:#dedcf1; }
+    * { box-sizing:border-box; } body { margin:0; min-height:100vh; padding:24px; background:linear-gradient(135deg,#fbfaff,#edf5ff); color:var(--ink); font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(100%,720px); margin:0 auto; padding:32px; background:rgba(255,255,255,.92); border-radius:28px; box-shadow:0 18px 50px rgba(55,58,120,.13); }
+    header { text-align:center; } h1 { margin:0; font-size:clamp(1.6rem,5vw,2.2rem); } .hint { margin:9px 0 24px; color:var(--muted); }
+    .controls { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; } .panel { padding:14px; border:1px solid var(--line); border-radius:16px; text-align:left; } label { display:block; color:#4c5870; font-size:.83rem; font-weight:700; margin-bottom:7px; }
+    select,input { width:100%; min-height:39px; border:1px solid #c9cbe1; border-radius:9px; padding:7px 9px; background:white; color:var(--ink); font:inherit; } .range { display:grid; grid-template-columns:1fr 1fr; gap:8px; } .range label { margin:0; }
+    .toggle { display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:39px; } .toggle label { margin:0; } input[type="checkbox"] { width:18px; min-height:18px; accent-color:var(--purple); }
+    .card { display:grid; place-items:center; min-height:160px; padding:15px; border-radius:22px; background:var(--pale); color:var(--purple); text-align:center; } .number { font-size:clamp(5.2rem,21vw,8.8rem); font-weight:800; letter-spacing:-.08em; font-variant-numeric:tabular-nums; } .listen-prompt { color:#5041b3; font-size:clamp(1.35rem,5vw,1.8rem); font-weight:750; line-height:1.3; }
+    .answer { min-height:64px; display:grid; place-items:center; margin:18px 0 14px; text-align:center; color:#283044; font-size:clamp(1.28rem,5vw,1.85rem); font-weight:700; } .answer.hidden { color:#768096; font-size:1rem; font-weight:500; }
+    .actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; } button { min-height:51px; border:0; border-radius:13px; padding:9px 13px; background:#f0f2f8; color:var(--ink); cursor:pointer; font:inherit; font-weight:750; transition:transform .15s,background .15s; } button:hover { transform:translateY(-2px); background:#e5e8f1; } button:focus-visible,select:focus-visible,input:focus-visible { outline:3px solid #aea5ec; outline-offset:2px; } #next { grid-column:1 / -1; color:white; background:var(--purple); } #next:hover { background:#5848c4; }
+    .footer { display:flex; justify-content:space-between; gap:12px; min-height:23px; margin:18px 2px 0; color:var(--muted); font-size:.88rem; } .status { margin:0; } .stats { margin:0; white-space:nowrap; }
+    @media (max-width:540px) { body { padding:14px; } main { padding:25px 18px; } .controls { grid-template-columns:1fr; } } @media (max-width:355px) { .actions { grid-template-columns:1fr; } #next { grid-column:auto; } .footer { display:block; } .stats { margin-top:6px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>Number English Practice</h1><p class="hint" id="hint">Read the number aloud, then check the answer.</p></header>
+    <section class="controls" aria-label="Practice settings">
+      <div class="panel"><label for="mode">Practice mode</label><select id="mode"><option value="read">Read the number</option><option value="listen">Listen and guess</option></select></div>
+      <div class="panel"><label for="preset">Number range</label><select id="preset"><option value="0-20">Basic: 0–20</option><option value="0-100" selected>Everyday: 0–100</option><option value="0-1000">Challenge: 0–1,000</option><option value="custom">Custom range</option></select></div>
+      <div class="panel" id="customPanel" hidden><label>Custom range (0–9,999)</label><div class="range"><input id="min" type="number" min="0" max="9999" value="0" aria-label="Minimum number"><input id="max" type="number" min="0" max="9999" value="100" aria-label="Maximum number"></div></div>
+      <div class="panel"><label for="speed">Speech speed</label><select id="speed"><option value="0.68">Slow</option><option value="0.82" selected>Normal</option><option value="1">Natural</option></select></div>
+      <div class="panel"><div class="toggle"><label for="autoplay">Auto-play next number</label><input id="autoplay" type="checkbox"></div></div>
+    </section>
+    <div class="card" id="card" aria-live="polite"><div class="number" id="number">42</div></div>
+    <div class="answer hidden" id="answer" aria-live="polite">English answer is hidden</div>
+    <div class="actions"><button id="show" type="button">Show English</button><button id="speak" type="button">🔊 Listen again</button><button id="next" type="button">Next Number</button></div>
+    <div class="footer"><p class="status" id="status" aria-live="polite">Finding the best installed American English voice…</p><p class="stats" id="stats">This session: 0 questions</p></div>
+  </main>
+  <script>
+    const $ = selector => document.querySelector(selector);
+    const numberEl = $('#number'), card = $('#card'), answerEl = $('#answer'), showButton = $('#show'), speakButton = $('#speak'), nextButton = $('#next'), statusEl = $('#status'), statsEl = $('#stats');
+    const mode = $('#mode'), preset = $('#preset'), customPanel = $('#customPanel'), minInput = $('#min'), maxInput = $('#max'), speed = $('#speed'), autoplay = $('#autoplay'), hint = $('#hint');
+    let currentNumber = 42, answerVisible = false, preferredVoice = null, questions = 0;
+    function numberToWords(n) { const small = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']; const tens = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']; if (n < 20) return small[n]; if (n < 100) return tens[Math.floor(n / 10)] + (n % 10 ? '-' + small[n % 10] : ''); if (n < 1000) return small[Math.floor(n / 100)] + ' hundred' + (n % 100 ? ' ' + numberToWords(n % 100) : ''); return small[Math.floor(n / 1000)] + ' thousand' + (n % 1000 ? ' ' + numberToWords(n % 1000) : ''); }
+    function getRange() { if (preset.value !== 'custom') return preset.value.split('-').map(Number); let low = Math.max(0, Math.min(9999, Number(minInput.value) || 0)); let high = Math.max(0, Math.min(9999, Number(maxInput.value) || 0)); if (low > high) [low, high] = [high, low]; minInput.value = low; maxInput.value = high; return [low, high]; }
+    function voiceLabel() { return preferredVoice ? `Voice: ${preferredVoice.name} · American English` : 'American English'; }
+    function chooseBestVoice() { if (!('speechSynthesis' in window)) return; const candidates = speechSynthesis.getVoices().filter(v => /^en-US/i.test(v.lang)); if (!candidates.length) { statusEl.textContent = 'No American English voice is installed. Browser default will be used.'; return; } const score = v => { const n = v.name.toLowerCase(); return (/siri|premium|enhanced|neural|natural/.test(n) ? 100 : 0) + (/ava|samantha|allison|zoe|jenny|aria|guy/.test(n) ? 20 : 0) + (v.localService ? 5 : 0) + (v.default ? 1 : 0); }; preferredVoice = candidates.sort((a,b) => score(b) - score(a))[0]; statusEl.textContent = voiceLabel(); }
+    function render() { const listening = mode.value === 'listen'; card.innerHTML = listening ? '<div class="listen-prompt">Listen carefully,<br>then say the number.</div>' : `<div class="number">${currentNumber}</div>`; answerEl.textContent = answerVisible ? `${currentNumber} — ${numberToWords(currentNumber)}` : (listening ? 'What number did you hear?' : 'English answer is hidden'); answerEl.classList.toggle('hidden', !answerVisible); showButton.textContent = answerVisible ? 'Hide Answer' : 'Show Answer'; hint.textContent = listening ? 'Listen first. Say the number aloud, then reveal the answer.' : 'Read the number aloud, then check the answer.'; statsEl.textContent = `This session: ${questions} question${questions === 1 ? '' : 's'}`; }
+    function speak() { if (!('speechSynthesis' in window)) { statusEl.textContent = 'Speech is not available in this browser.'; return; } speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(numberToWords(currentNumber)); utterance.lang = 'en-US'; utterance.rate = Number(speed.value); if (preferredVoice) utterance.voice = preferredVoice; utterance.onstart = () => statusEl.textContent = preferredVoice ? `Playing: ${preferredVoice.name}…` : 'Playing American English pronunciation…'; utterance.onend = () => statusEl.textContent = voiceLabel(); utterance.onerror = () => statusEl.textContent = 'Could not play audio. Please check browser sound settings.'; speechSynthesis.speak(utterance); }
+    function newNumber() { const [low, high] = getRange(); let next; do { next = low + Math.floor(Math.random() * (high - low + 1)); } while (next === currentNumber && high > low); currentNumber = next; answerVisible = false; questions++; window.speechSynthesis?.cancel(); render(); if (autoplay.checked || mode.value === 'listen') window.setTimeout(speak, 140); }
+    preset.addEventListener('change', () => { customPanel.hidden = preset.value !== 'custom'; newNumber(); }); mode.addEventListener('change', newNumber); minInput.addEventListener('change', newNumber); maxInput.addEventListener('change', newNumber); showButton.addEventListener('click', () => { answerVisible = !answerVisible; render(); }); speakButton.addEventListener('click', speak); nextButton.addEventListener('click', newNumber); document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && !['INPUT','SELECT'].includes(document.activeElement.tagName)) { e.preventDefault(); newNumber(); } }); if ('speechSynthesis' in window) { chooseBestVoice(); speechSynthesis.addEventListener('voiceschanged', chooseBestVoice); } newNumber(); window.addEventListener('pageshow', event => { if (event.persisted) newNumber(); });
+  </script>
+</body>
+</html>
