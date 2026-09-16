@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小医仙 Logo 候选预览</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #090b18; color: #f8fafc; }
+    main { width: min(900px, calc(100% - 48px)); padding: 48px 0; text-align: center; }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    p { color: #cbd5e1; margin: .7rem 0 2.5rem; }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; }
+    figure { margin: 0; }
+    .logo { width: min(320px, 100%); aspect-ratio: 1; margin: 0 auto 18px; padding: 13px; border-radius: 50%; box-sizing: border-box; overflow: hidden; background: linear-gradient(135deg, #f5f3ff, #c4b5fd 52%, #38bdf8); box-shadow: 0 18px 48px rgba(139, 92, 246, .28); }
+    .logo img { width: 100%; height: 100%; object-fit: cover; object-position: center; border: 8px solid #140d25; border-radius: 50%; box-sizing: border-box; }
+    .three-d { background: linear-gradient(135deg, #fff, #d8b4fe 52%, #a855f7); box-shadow: 0 18px 48px rgba(192, 132, 252, .3); }
+    figcaption { font-size: 1.1rem; font-weight: 750; }
+    figcaption span { display: block; margin-top: .35rem; color: #a5b4fc; font-size: .88rem; font-weight: 500; }
+    @media (max-width: 640px) { .choices { grid-template-columns: 1fr; gap: 36px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>小医仙 · 网站 Logo 候选</h1>
+    <p>人物裁切为圆形，外围加入适合深浅背景的渐变描边。</p>
+    <section class="choices" aria-label="Logo 候选">
+      <figure>
+        <div class="logo"><img src="https://haowallpaper.com/link/common/file/getCroppingImg/17502615886351744" alt="银发仙气版小医仙"></div>
+        <figcaption>A · 银发仙气版<span>淡紫、天蓝描边</span></figcaption>
+      </figure>
+      <figure>
+        <div class="logo three-d"><img src="https://n.sinaimg.cn/sinakd20111/762/w1000h562/20240929/3c31-cc53d74a062c2a90ebffdc538c1b8e12.jpg" alt="白紫礼服 3D 版小医仙"></div>
+        <figcaption>B · 白紫礼服 3D 版<span>白色、紫色描边</span></figcaption>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">小医仙银发仙气版 Logo 预览</title>
+  <desc id="desc">以银白发、浅紫礼服小医仙宣传图为主体的圆形网站头像预览</desc>
+  <defs>
+    <clipPath id="portrait"><circle cx="256" cy="256" r="208"/></clipPath>
+    <linearGradient id="halo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f3ff"/>
+      <stop offset=".48" stop-color="#c4b5fd"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <!-- Preview only: this stays linked to the online reference image, not copied into the repository. -->
+  <circle cx="256" cy="256" r="244" fill="#100c24"/>
+  <image x="48" y="48" width="416" height="416" preserveAspectRatio="xMidYMid slice" clip-path="url(#portrait)"
+    href="https://haowallpaper.com/link/common/file/getCroppingImg/17502615886351744"
+    xlink:href="https://haowallpaper.com/link/common/file/getCroppingImg/17502615886351744"/>
+  <circle cx="256" cy="256" r="212" fill="none" stroke="url(#halo)" stroke-width="9"/>
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#ede9fe" stroke-opacity=".75" stroke-width="2" stroke-dasharray="4 12"/>
+  <path d="M102 366c45 42 100 63 154 63 57 0 111-22 154-63" fill="none" stroke="#ddd6fe" stroke-width="4" stroke-linecap="round"/>
+</svg>

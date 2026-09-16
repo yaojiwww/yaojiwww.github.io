@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🧠 智能标题判断：如果是文章页看 page.title；如果是专栏页看 page.category；都没有就显示默认博客名！ -->
+    <title>串口下载程序</title>
+    
+    <!-- 🚀 Hexo 原生样式引入助手：自动连通我们刚才在 source/css/style.css 写的样式！ -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="doc-page-body">
+    <!-- 🧱 积木魔法：引入全站通用顶部导航 -->
+    <header style="text-align: center; padding: 2rem 0; border-bottom: 1px solid #eee; margin-bottom: 2rem;">
+    <!-- 点击博客名字，永远能回到首页 -->
+    <!-- 你的全站导航菜单 -->
+    <nav class="site-nav" style="margin-top: 1rem;">
+        <a class="site-brand" href="/" aria-label="Yao's Tools 首页">
+            <img class="site-logo" src="/images/xiaoyixian-logo.svg" alt="小医仙白紫礼服标志">
+            <h1>Yao's Tools</h1>
+        </a>
+        <a href="https://github.com/yaojiwww" target="_blank" style="margin: 0 1rem; color: #666; text-decoration: none;">GitHub</a>
+        <a href="/" style="margin: 0 1rem; color: #666; text-decoration: none;">小工具</a>
+        
+        <!-- 🌙 日夜切换开关按钮 -->
+        <button id="theme-toggle" style="margin-left: 1rem; padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-main); cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s;">
+            🌙 暗黑模式
+        </button>
+    </nav>
+</header>
+
+
+    <div class="doc-layout-wrapper">
+        <div class="doc-layout-grid">
+            <!-- 👈 左侧栏：代码库偏好开关 + 文章目录 -->
+            <aside class="doc-sidebar doc-sidebar-left">
+                <!-- 1. 小巧精致的药丸偏好开关 (Small Pill Switch) -->
+                <div class="sidebar-pill-container">
+                    <span class="pill-label">🛠️ 偏好库</span>
+                    <div class="pill-track">
+                        <button class="lib-btn pill-btn active" data-mode="std" onclick="switchStm32Lib('std')">标准库</button>
+                        <button class="lib-btn pill-btn" data-mode="hal" onclick="switchStm32Lib('hal')">HAL库</button>
+                    </div>
+                </div>
+
+                <!-- 2. 左侧文章目录栏 -->
+                <div class="sidebar-nav-box">
+                    
+                    
+                        
+                        <div class="sidebar-nav-header">
+                            <span>📚 STM32 专栏目录</span>
+                            <span class="post-count">9 篇</span>
+                        </div>
+                        <ul class="sidebar-nav-list">
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/1.%20%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%80%E4%BB%8B/" class="sidebar-nav-link">
+                                        <span class="nav-title">微控制器简介</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/2.%20%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BB%BA%E8%AE%AE/" class="sidebar-nav-link">
+                                        <span class="nav-title">学习路线与建议</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/3.%20%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="sidebar-nav-link">
+                                        <span class="nav-title">配置开发环境</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/4.%20%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AF%84%E5%AD%98%E5%99%A8/" class="sidebar-nav-link">
+                                        <span class="nav-title">芯片架构与寄存器</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/5.%20%E9%80%9A%E8%BF%87%E5%AF%84%E5%AD%98%E5%99%A8%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="sidebar-nav-link">
+                                        <span class="nav-title">通过寄存器操作实现第一个程序</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item active">
+                                    <a href="/2026/07/08/Embedded/STM32/6.%20%E4%B8%B2%E5%8F%A3%E4%B8%8B%E8%BD%BD%E7%A8%8B%E5%BA%8F/" class="sidebar-nav-link">
+                                        <span class="nav-title">串口下载程序</span>
+                                        
+                                            <span class="active-tag">当前</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/7.%20%E5%A4%96%E8%AE%BE--GPIO/" class="sidebar-nav-link">
+                                        <span class="nav-title">外设--GPIO</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/8.%20%E5%A4%96%E8%AE%BE--EXTI/" class="sidebar-nav-link">
+                                        <span class="nav-title">外设--EXTI</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                                <li class="sidebar-nav-item ">
+                                    <a href="/2026/07/08/Embedded/STM32/9.%20%E5%A4%96%E8%AE%BE--TIM/" class="sidebar-nav-link">
+                                        <span class="nav-title">外设--TIM</span>
+                                        
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </div>
+            </aside>
+
+            <!-- 🎯 中间主体区：文章内容 -->
+            <main class="doc-main-content">
+                <article class="article-container">
+                    <h1 class="article-title">串口下载程序</h1>
+                    <div class="article-meta">
+                        <span>发布于：2026-07-08</span>
+                        
+                            <span style="margin-left: 1.2rem;">所属专栏：<a href="/categories/STM32/" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">STM32</a></span>
+                        
+                    </div>
+                    
+                    <div class="article-content" id="article-main-content">
+                        
+                    </div>
+
+                    <!-- 底部上一篇 / 下一篇导航卡片 -->
+                    
+                        
+                        <div class="doc-footer-nav">
+                            
+                                <a href="/2026/07/08/Embedded/STM32/5.%20%E9%80%9A%E8%BF%87%E5%AF%84%E5%AD%98%E5%99%A8%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="doc-footer-link prev-link">
+                                    <span class="nav-label">← 上一篇</span>
+                                    <span class="nav-post-title">通过寄存器操作实现第一个程序</span>
+                                </a>
+                            
+                            
+                                <a href="/2026/07/08/Embedded/STM32/7.%20%E5%A4%96%E8%AE%BE--GPIO/" class="doc-footer-link next-link">
+                                    <span class="nav-label">下一篇 →</span>
+                                    <span class="nav-post-title">外设--GPIO</span>
+                                </a>
+                            
+                        </div>
+                    
+                </article>
+            </main>
+
+            <!-- 👉 右侧栏：本页目录 (Table of Contents) -->
+            <aside class="doc-sidebar doc-sidebar-right">
+                <div class="toc-sticky-box">
+                    <div class="toc-header">
+                        <span>📑 本页目录</span>
+                    </div>
+                    <div class="toc-body" id="page-toc-container">
+                        
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 🧱 积木魔法：引入全站通用尾部 -->
+    <footer style="text-align: center; padding: 3rem 0; color: #999; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem;">
+    <!-- 这里的 new Date().getFullYear() 是 JS 代码，能自动获取当前年份，永远不用手动改！ -->
+    <p>© 2026 Yao's Tools</p>
+</footer>
+<!-- 🚀 引入咱们刚写的 JS 交互魔法！ -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

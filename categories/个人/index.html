@@ -12,17 +12,19 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 8.1.2"></head>
+
 <body>
     <!-- 🧱 积木魔法：引入全站通用导航顶栏 -->
     <header style="text-align: center; padding: 2rem 0; border-bottom: 1px solid #eee; margin-bottom: 2rem;">
     <!-- 点击博客名字，永远能回到首页 -->
     <!-- 你的全站导航菜单 -->
-    <nav style="margin-top: 1rem;">
-        <a href="/" style="text-decoration: none; color: #111;">
-            <h1 style="margin: 0;">Monologue</h1>
+    <nav class="site-nav" style="margin-top: 1rem;">
+        <a class="site-brand" href="/" aria-label="Yao's Tools 首页">
+            <img class="site-logo" src="/images/xiaoyixian-logo.svg" alt="小医仙白紫礼服标志">
+            <h1>Yao's Tools</h1>
         </a>
         <a href="https://github.com/yaojiwww" target="_blank" style="margin: 0 1rem; color: #666; text-decoration: none;">GitHub</a>
-        <span>专栏</span>
+        <a href="/" style="margin: 0 1rem; color: #666; text-decoration: none;">小工具</a>
         
         <!-- 🌙 日夜切换开关按钮 -->
         <button id="theme-toggle" style="margin-left: 1rem; padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-main); cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s;">
@@ -30,6 +32,7 @@
         </button>
     </nav>
 </header>
+
 
     <main>
         <!-- 专栏横幅介绍 -->
@@ -40,30 +43,19 @@
 
         <!-- 知识点目录列表 -->
         <section class="post-list-box">
-            <!-- 遍历输出当前专栏下的所有文章 -->
+            <!-- 支持在 Markdown YAML 中通过 order: X 自定义固定排序 -->
+            
             
                 <div class="post-item">
                     <div>
                         <!-- 序号 (index + 1) + 文章超链接 -->
                         <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">1.</span>
-                        <a href="/2026/07/04/blog/" class="post-link">
-                            Hello! My first blog
-                        </a>
-                    </div>
-                    <!-- 文章发布日期 -->
-                    <div class="post-date">2026-07-04</div>
-                </div>
-            
-                <div class="post-item">
-                    <div>
-                        <!-- 序号 (index + 1) + 文章超链接 -->
-                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">2.</span>
-                        <a href="/2026/07/04/hello-world/" class="post-link">
+                        <a href="/2026/07/03/hello-world/" class="post-link">
                             Hello World
                         </a>
                     </div>
                     <!-- 文章发布日期 -->
-                    <div class="post-date">2026-07-04</div>
+                    <div class="post-date">2026-07-03</div>
                 </div>
             
         </section>
@@ -72,11 +64,12 @@
     <!-- 🧱 积木魔法：引入全站通用尾部 -->
     <footer style="text-align: center; padding: 3rem 0; color: #999; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem;">
     <!-- 这里的 new Date().getFullYear() 是 JS 代码，能自动获取当前年份，永远不用手动改！ -->
-    <p>© 2026 Monologue Theme. Designed with ❤️ by You.</p>
+    <p>© 2026 Yao's Tools</p>
 </footer>
 <!-- 🚀 引入咱们刚写的 JS 交互魔法！ -->
 
 <script src="/js/main.js"></script>
+
 
 </body>
 </html>

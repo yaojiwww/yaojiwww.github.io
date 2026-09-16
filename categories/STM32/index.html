@@ -12,17 +12,19 @@
 <link rel="stylesheet" href="/css/style.css">
 
 <meta name="generator" content="Hexo 8.1.2"></head>
+
 <body>
     <!-- 🧱 积木魔法：引入全站通用导航顶栏 -->
     <header style="text-align: center; padding: 2rem 0; border-bottom: 1px solid #eee; margin-bottom: 2rem;">
     <!-- 点击博客名字，永远能回到首页 -->
     <!-- 你的全站导航菜单 -->
-    <nav style="margin-top: 1rem;">
-        <a href="/" style="text-decoration: none; color: #111;">
-            <h1 style="margin: 0;">Monologue</h1>
+    <nav class="site-nav" style="margin-top: 1rem;">
+        <a class="site-brand" href="/" aria-label="Yao's Tools 首页">
+            <img class="site-logo" src="/images/xiaoyixian-logo.svg" alt="小医仙白紫礼服标志">
+            <h1>Yao's Tools</h1>
         </a>
         <a href="https://github.com/yaojiwww" target="_blank" style="margin: 0 1rem; color: #666; text-decoration: none;">GitHub</a>
-        <span>专栏</span>
+        <a href="/" style="margin: 0 1rem; color: #666; text-decoration: none;">小工具</a>
         
         <!-- 🌙 日夜切换开关按钮 -->
         <button id="theme-toggle" style="margin-left: 1rem; padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-main); cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.2s;">
@@ -30,6 +32,7 @@
         </button>
     </nav>
 </header>
+
 
     <main>
         <!-- 专栏横幅介绍 -->
@@ -40,42 +43,115 @@
 
         <!-- 知识点目录列表 -->
         <section class="post-list-box">
-            <!-- 遍历输出当前专栏下的所有文章 -->
+            <!-- 支持在 Markdown YAML 中通过 order: X 自定义固定排序 -->
+            
             
                 <div class="post-item">
                     <div>
                         <!-- 序号 (index + 1) + 文章超链接 -->
                         <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">1.</span>
-                        <a href="/2026/07/06/Embedded/STM32/stm32-gpio-tutorial/" class="post-link">
-                            STM32 GPIO 端口初始化与点灯实战（双库联动版）
+                        <a href="/2026/07/08/Embedded/STM32/1.%20%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8%E7%AE%80%E4%BB%8B/" class="post-link">
+                            微控制器简介
                         </a>
                     </div>
                     <!-- 文章发布日期 -->
-                    <div class="post-date">2026-07-06</div>
+                    <div class="post-date">2026-07-08</div>
                 </div>
             
                 <div class="post-item">
                     <div>
                         <!-- 序号 (index + 1) + 文章超链接 -->
                         <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">2.</span>
-                        <a href="/2026/07/06/Embedded/STM32/Make+VSCode%E6%9E%84%E5%BB%BA%E6%A0%87%E5%87%86%E5%BA%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-link">
-                            快速开始（标准库）
+                        <a href="/2026/07/08/Embedded/STM32/2.%20%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E4%B8%8E%E5%BB%BA%E8%AE%AE/" class="post-link">
+                            学习路线与建议
                         </a>
                     </div>
                     <!-- 文章发布日期 -->
-                    <div class="post-date">2026-07-06</div>
+                    <div class="post-date">2026-07-08</div>
                 </div>
             
                 <div class="post-item">
                     <div>
                         <!-- 序号 (index + 1) + 文章超链接 -->
                         <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">3.</span>
-                        <a href="/2026/07/05/Embedded/STM32/STM32CubeMX+VScode%E5%BC%80%E5%8F%91STM32%E8%AF%A6%E7%BB%86%E6%8C%87%E5%8D%97(%E9%80%82%E5%90%88%E5%A4%9A%E7%B3%BB%E7%BB%9F%EF%BC%89/" class="post-link">
-                            快速开始
+                        <a href="/2026/07/08/Embedded/STM32/3.%20%E9%85%8D%E7%BD%AE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-link">
+                            配置开发环境
                         </a>
                     </div>
                     <!-- 文章发布日期 -->
-                    <div class="post-date">2026-07-05</div>
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">4.</span>
+                        <a href="/2026/07/08/Embedded/STM32/4.%20%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%AF%84%E5%AD%98%E5%99%A8/" class="post-link">
+                            芯片架构与寄存器
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">5.</span>
+                        <a href="/2026/07/08/Embedded/STM32/5.%20%E9%80%9A%E8%BF%87%E5%AF%84%E5%AD%98%E5%99%A8%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F/" class="post-link">
+                            通过寄存器操作实现第一个程序
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">6.</span>
+                        <a href="/2026/07/08/Embedded/STM32/6.%20%E4%B8%B2%E5%8F%A3%E4%B8%8B%E8%BD%BD%E7%A8%8B%E5%BA%8F/" class="post-link">
+                            串口下载程序
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">7.</span>
+                        <a href="/2026/07/08/Embedded/STM32/7.%20%E5%A4%96%E8%AE%BE--GPIO/" class="post-link">
+                            外设--GPIO
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">8.</span>
+                        <a href="/2026/07/08/Embedded/STM32/8.%20%E5%A4%96%E8%AE%BE--EXTI/" class="post-link">
+                            外设--EXTI
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
+                </div>
+            
+                <div class="post-item">
+                    <div>
+                        <!-- 序号 (index + 1) + 文章超链接 -->
+                        <span style="color: #3b82f6; font-weight: bold; margin-right: 0.6rem;">9.</span>
+                        <a href="/2026/07/08/Embedded/STM32/9.%20%E5%A4%96%E8%AE%BE--TIM/" class="post-link">
+                            外设--TIM
+                        </a>
+                    </div>
+                    <!-- 文章发布日期 -->
+                    <div class="post-date">2026-07-08</div>
                 </div>
             
         </section>
@@ -84,11 +160,12 @@
     <!-- 🧱 积木魔法：引入全站通用尾部 -->
     <footer style="text-align: center; padding: 3rem 0; color: #999; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 4rem;">
     <!-- 这里的 new Date().getFullYear() 是 JS 代码，能自动获取当前年份，永远不用手动改！ -->
-    <p>© 2026 Monologue Theme. Designed with ❤️ by You.</p>
+    <p>© 2026 Yao's Tools</p>
 </footer>
 <!-- 🚀 引入咱们刚写的 JS 交互魔法！ -->
 
 <script src="/js/main.js"></script>
+
 
 </body>
 </html>
